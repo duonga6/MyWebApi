@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyWebApi.Data;
-using MyWebApi.Models;
+using MyWebApi.Models.CategoryModels;
 
 namespace MyWebApi.Controllers
 {

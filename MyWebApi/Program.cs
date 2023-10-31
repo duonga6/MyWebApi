@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MyWebApi.Data;
+using MyWebApi.Services.CategoryServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,10 @@ builder.Services.AddDbContext<MyDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("MyDB"));
 });
+
+// Services
+
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 var app = builder.Build();
 
