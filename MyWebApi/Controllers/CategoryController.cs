@@ -19,8 +19,8 @@ namespace MyWebApi.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var categories = _context.Categories;
-            return Ok(categories.ToList());
+            var categories = _context.Categories.ToList();
+            return Ok(categories);
         }
 
         [HttpGet("id")]
@@ -56,7 +56,7 @@ namespace MyWebApi.Controllers
                 _context.Categories.Add(category);
                 _context.SaveChanges();
 
-                return Ok(category);
+                return StatusCode(StatusCodes.Status201Created, category);
             }
             catch
             {
@@ -78,7 +78,7 @@ namespace MyWebApi.Controllers
 
                 _context.SaveChanges();
 
-                return Ok(category);
+                return StatusCode(StatusCodes.Status204NoContent);
 
             }
             catch
