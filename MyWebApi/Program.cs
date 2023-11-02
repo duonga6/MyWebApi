@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MyWebApi.Data;
 using MyWebApi.Services.CategoryServices;
+using MyWebApi.Services.ProductServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,9 @@ builder.Services.AddDbContext<MyDbContext>(option =>
 // Services
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+//builder.Services.AddScoped<ICategoryService, CategoryServiceInMemory>();
+
+builder.Services.AddScoped<IProductService, ProductSerivce>();
 
 var app = builder.Build();
 
