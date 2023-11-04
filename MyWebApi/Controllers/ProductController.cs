@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyWebApi.Models.ProductModels;
 using MyWebApi.Services.ProductServices;
@@ -35,7 +36,7 @@ namespace MyWebApi.Controllers
             }
         }
 
-        [HttpGet("Id")]
+        [HttpGet("{Id:int}")]
         public IActionResult GetById(int Id)
         {
             try
@@ -54,6 +55,7 @@ namespace MyWebApi.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Create(ProductModel model)
         {
             try
@@ -66,7 +68,7 @@ namespace MyWebApi.Controllers
             }
         }
 
-        [HttpPut("Id")]
+        [HttpPut("{Id:int}")]
         public IActionResult Update(int Id, ProductVM model)
         {
             if (Id != model.Id) { return NotFound(); }
@@ -81,7 +83,7 @@ namespace MyWebApi.Controllers
             }
         }
 
-        [HttpDelete("Id")]
+        [HttpDelete("{Id:int}")]
         public IActionResult Delete(int Id)
         {
             try

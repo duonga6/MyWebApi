@@ -44,6 +44,11 @@ namespace MyWebApi.Data
                         .OnDelete(DeleteBehavior.Cascade);
 
             });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasIndex(u => u.UserName).IsUnique();
+            });
         }
 
         #region DbSet
@@ -51,6 +56,7 @@ namespace MyWebApi.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
+        public DbSet<User> Users { get; set; }
         #endregion
     }
 }
